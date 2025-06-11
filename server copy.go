@@ -20,23 +20,6 @@ type Unit struct {
 	Signal4 int `json:"signal4" db:"signal4"`
 }
 
-/*
-type UnitReq struct {
-	Unit	// Outputting statistics for Unit#1
-	fmt.Fprint(w, "\nUnit#1")
-	fmt.Println("Sig#1. Level: ", u1sig1Sum)
-	fmt.Println("Sig#2. Level: ", u1sig2Sum)
-	fmt.Println("Sig#3. Level: ", u1sig3Sum)
-	fmt.Println("Sig#4. Level: ", u1sig4Sum)
-	if u1sig1Sum/5 < 4 { int `json:"unit_number"`
-	Signal1 int `json:"signal1" db:"signal1"`
-	Signal2 int `json:"signal2" db:"signal2"`
-	Signal3 int `json:"signal3" db:"signal3"`
-	Signal4 int `json:"signal4" db:"signal4"`
-	Id 	int `json:"id" db:"id"`
-}
-*/
-
 func establishDBConn() (*pgx.Conn, error) {
 	conn, err := pgx.Connect(context.Background(), "postgres://postgres:12345@pgDB:5432/units?sslmode=disable")
 
