@@ -13,7 +13,7 @@ import (
 
 type Unit struct {
 	UnitN   int `json:"unit_number"`
-	ID      int `json:"day" db:"day"` // Using day instead of id to match DB column
+	ID      int `json:"day" db:"day"`
 	Signal1 int `json:"signal1" db:"signal1"`
 	Signal2 int `json:"signal2" db:"signal2"`
 	Signal3 int `json:"signal3" db:"signal3"`
@@ -61,9 +61,10 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 		unit1Week = append(unit1Week, unit)
 	}
 
-	fmt.Fprint(w, "\nUnit#1")
+	fmt.Fprintf(w, "\n=== Unit #1 ===\n")
 	for _, unit := range unit1Week {
-		fmt.Fprintf(w, "Unit #%d\nDay: %d\nSignal1: %d, Signal2: %d, Signal3: %d, Signal4: %d\n", unit.UnitN, unit.ID, unit.Signal1, unit.Signal2, unit.Signal3, unit.Signal4)
+		fmt.Fprintf(w, "Day: %d\nSignal1: %d, Signal2: %d, Signal3: %d, Signal4: %d\n\n",
+			unit.ID, unit.Signal1, unit.Signal2, unit.Signal3, unit.Signal4)
 	}
 
 	// Fetching data for Unit#2
@@ -84,52 +85,10 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 		unit2Week = append(unit2Week, unit)
 	}
 
-	fmt.Fprint(w, "\nUnit#2")
+	fmt.Fprintf(w, "\n=== Unit #2 ===\n")
 	for _, unit := range unit2Week {
-		fmt.Fprintf(w, "Unit #%d\nDay: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n", unit.UnitN, unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
-	}
-
-	//Calculate statistics for Unit#2
-	u2sig1Sum := 0
-	u2sig2Sum := 0
-	u2sig3Sum := 0
-	for _, unit := range unit2Week {
-		u2sig1Sum += unit.Signal1
-		u2sig2Sum += unit.Signal2
-		u2sig3Sum += unit.Signal3
-	}
-
-	// Outputting statistics for Unit#2
-	fmt.Fprint(w, "\nUnit#2")
-	fmt.Println("Sig#1. Level: ", u2sig1Sum)
-	fmt.Println("Sig#2. Level: ", u2sig2Sum)
-	fmt.Println("Sig#3. Level: ", u2sig3Sum)
-
-	// Signal 1
-	if u2sig1Sum/5 < 4 {
-		fmt.Println("Unit#2 Signal#1 code green")
-	} else if u2sig1Sum/5 >= 4 && u2sig1Sum/5 < 7 {
-		fmt.Println("Unit#2 Signal#1 code orange")
-	} else if u2sig1Sum/5 >= 7 {
-		fmt.Println("Unit#2 Signal#1 code red")
-	}
-
-	// Signal 2
-	if u2sig2Sum/5 < 4 {
-		fmt.Println("Unit#2 Signal#2 code green")
-	} else if u2sig2Sum/5 >= 4 && u2sig2Sum/5 < 7 {
-		fmt.Println("Unit#2 Signal#2 code orange")
-	} else if u2sig2Sum/5 >= 7 {
-		fmt.Println("Unit#2 Signal#2 code red")
-	}
-
-	// Signal 3
-	if u2sig3Sum/5 < 4 {
-		fmt.Println("Unit#2 Signal#3 code green")
-	} else if u2sig3Sum/5 >= 4 && u2sig3Sum/5 < 7 {
-		fmt.Println("Unit#2 Signal#3 code orange")
-	} else if u2sig3Sum/5 >= 7 {
-		fmt.Println("Unit#2 Signal#3 code red")
+		fmt.Fprintf(w, "Day: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n\n",
+			unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
 	}
 
 	// Fetching data for Unit#3
@@ -150,52 +109,10 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 		unit3Week = append(unit3Week, unit)
 	}
 
-	fmt.Fprint(w, "\nUnit#3")
+	fmt.Fprintf(w, "\n=== Unit #3 ===\n")
 	for _, unit := range unit3Week {
-		fmt.Fprintf(w, "Unit #%d\nDay: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n", unit.UnitN, unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
-	}
-
-	//Calculate statistics for Unit#3
-	u3sig1Sum := 0
-	u3sig2Sum := 0
-	u3sig3Sum := 0
-	for _, unit := range unit3Week {
-		u3sig1Sum += unit.Signal1
-		u3sig2Sum += unit.Signal2
-		u3sig3Sum += unit.Signal3
-	}
-
-	// Outputting statistics for Unit#3
-	fmt.Fprint(w, "\nUnit#3")
-	fmt.Println("Sig#1. Level: ", u3sig1Sum)
-	fmt.Println("Sig#2. Level: ", u3sig2Sum)
-	fmt.Println("Sig#3. Level: ", u3sig3Sum)
-
-	// Signal 1
-	if u3sig1Sum/5 < 4 {
-		fmt.Println("Unit#3 Signal#1 code green")
-	} else if u3sig1Sum/5 >= 4 && u3sig1Sum/5 < 7 {
-		fmt.Println("Unit#3 Signal#1 code orange")
-	} else if u3sig1Sum/5 >= 7 {
-		fmt.Println("Unit#3 Signal#1 code red")
-	}
-
-	// Signal 2
-	if u3sig2Sum/5 < 4 {
-		fmt.Println("Unit#3 Signal#2 code green")
-	} else if u3sig2Sum/5 >= 4 && u3sig2Sum/5 < 7 {
-		fmt.Println("Unit#3 Signal#2 code orange")
-	} else if u3sig2Sum/5 >= 7 {
-		fmt.Println("Unit#3 Signal#2 code red")
-	}
-
-	// Signal 3
-	if u3sig3Sum/5 < 4 {
-		fmt.Println("Unit#3 Signal#3 code green")
-	} else if u3sig3Sum/5 >= 4 && u3sig3Sum/5 < 7 {
-		fmt.Println("Unit#3 Signal#3 code orange")
-	} else if u3sig3Sum/5 >= 7 {
-		fmt.Println("Unit#3 Signal#3 code red")
+		fmt.Fprintf(w, "Day: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n\n",
+			unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
 	}
 
 	// Fetching data for Unit#4
@@ -216,52 +133,10 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 		unit4Week = append(unit4Week, unit)
 	}
 
-	fmt.Fprint(w, "\nUnit#4")
+	fmt.Fprintf(w, "\n=== Unit #4 ===\n")
 	for _, unit := range unit4Week {
-		fmt.Fprintf(w, "Unit #%d\nDay: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n", unit.UnitN, unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
-	}
-
-	//Calculate statistics for Unit#4
-	u4sig1Sum := 0
-	u4sig2Sum := 0
-	u4sig3Sum := 0
-	for _, unit := range unit4Week {
-		u4sig1Sum += unit.Signal1
-		u4sig2Sum += unit.Signal2
-		u4sig3Sum += unit.Signal3
-	}
-
-	// Outputting statistics for Unit#4
-	fmt.Fprint(w, "\nUnit#4")
-	fmt.Println("Sig#1. Level: ", u4sig1Sum)
-	fmt.Println("Sig#2. Level: ", u4sig2Sum)
-	fmt.Println("Sig#3. Level: ", u4sig3Sum)
-
-	// Signal 1
-	if u4sig1Sum/5 < 4 {
-		fmt.Println("Unit#4 Signal#1 code green")
-	} else if u4sig1Sum/5 >= 4 && u4sig1Sum/5 < 7 {
-		fmt.Println("Unit#4 Signal#1 code orange")
-	} else if u4sig1Sum/5 >= 7 {
-		fmt.Println("Unit#4 Signal#1 code red")
-	}
-
-	// Signal 2
-	if u4sig2Sum/5 < 4 {
-		fmt.Println("Unit#4 Signal#2 code green")
-	} else if u4sig2Sum/5 >= 4 && u4sig2Sum/5 < 7 {
-		fmt.Println("Unit#4 Signal#2 code orange")
-	} else if u4sig2Sum/5 >= 7 {
-		fmt.Println("Unit#4 Signal#2 code red")
-	}
-
-	// Signal 3
-	if u4sig3Sum/5 < 4 {
-		fmt.Println("Unit#4 Signal#3 code green")
-	} else if u4sig3Sum/5 >= 4 && u4sig3Sum/5 < 7 {
-		fmt.Println("Unit#4 Signal#3 code orange")
-	} else if u4sig3Sum/5 >= 7 {
-		fmt.Println("Unit#4 Signal#3 code red")
+		fmt.Fprintf(w, "Day: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n\n",
+			unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
 	}
 }
 
@@ -357,7 +232,6 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	u1sig3Sum := 0
 	u1sig4Sum := 0
 	for _, unit := range unit1Week {
-		//fmt.Fprintf(w, "Unit #%d\nDay: %d\nSignal1: %d, Signal2: %d, Signal3: %d, Signal4: %d\n", unit.UnitN, unit.ID, unit.Signal1, unit.Signal2, unit.Signal3, unit.Signal4)
 		u1sig1Sum += unit.Signal1
 		u1sig2Sum += unit.Signal2
 		u1sig3Sum += unit.Signal3
@@ -424,11 +298,6 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 		unit.UnitN = 2
 		unit2Week = append(unit2Week, unit)
 	}
-
-	/*fmt.Fprint(w, "\nUnit#2")
-	for _, unit := range unit2Week {
-		fmt.Fprintf(w, "Unit #%d\nDay: %d\nSignal1: %d, Signal2: %d, Signal3: %d\n", unit.UnitN, unit.ID, unit.Signal1, unit.Signal2, unit.Signal3)
-	}*/
 
 	//Calculate statistics for Unit#2
 	u2sig1Sum := 0
