@@ -13,7 +13,7 @@ import (
 
 type Unit struct {
 	UnitN   int `json:"unit_number"`
-	ID      int `json:"day" db:"day"`
+	ID      int `json:"id" db:"id"`
 	Signal1 int `json:"signal1" db:"signal1"`
 	Signal2 int `json:"signal2" db:"signal2"`
 	Signal3 int `json:"signal3" db:"signal3"`
@@ -21,7 +21,7 @@ type Unit struct {
 }
 
 func establishDBConn() (*pgx.Conn, error) {
-	conn, err := pgx.Connect(context.Background(), "postgres://postgres:12345@pgDB:5432/units?sslmode=disable")
+	conn, err := pgx.Connect(context.Background(), "postgres://postgres:12345@pgDB:5433/units?sslmode=disable")
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
@@ -44,7 +44,7 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 	var unit4Week []Unit
 
 	// Fetching data for Unit#1
-	rows1, err := dbConnection.Query(context.Background(), "SELECT * FROM unit1 ORDER BY day")
+	rows1, err := dbConnection.Query(context.Background(), "SELECT * FROM unit1 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -68,7 +68,7 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 	}
 
 	// Fetching data for Unit#2
-	rows2, err := dbConnection.Query(context.Background(), "SELECT * FROM unit2 ORDER BY day")
+	rows2, err := dbConnection.Query(context.Background(), "SELECT * FROM unit2 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -92,7 +92,7 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 	}
 
 	// Fetching data for Unit#3
-	rows3, err := dbConnection.Query(context.Background(), "SELECT * FROM unit3 ORDER BY day")
+	rows3, err := dbConnection.Query(context.Background(), "SELECT * FROM unit3 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -116,7 +116,7 @@ func mainFetchData(w http.ResponseWriter, _ *http.Request) {
 	}
 
 	// Fetching data for Unit#4
-	rows4, err := dbConnection.Query(context.Background(), "SELECT * FROM unit4 ORDER BY day")
+	rows4, err := dbConnection.Query(context.Background(), "SELECT * FROM unit4 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -209,7 +209,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	var unit4Week []Unit
 
 	// Fetching data for Unit#1
-	rows1, err := dbConnection.Query(context.Background(), "SELECT * FROM unit1 ORDER BY day")
+	rows1, err := dbConnection.Query(context.Background(), "SELECT * FROM unit1 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -282,7 +282,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Fetching data for Unit#2
-	rows2, err := dbConnection.Query(context.Background(), "SELECT * FROM unit2 ORDER BY day")
+	rows2, err := dbConnection.Query(context.Background(), "SELECT * FROM unit2 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -343,7 +343,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Fetching data for Unit#3
-	rows3, err := dbConnection.Query(context.Background(), "SELECT * FROM unit3 ORDER BY day")
+	rows3, err := dbConnection.Query(context.Background(), "SELECT * FROM unit3 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
@@ -409,7 +409,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Fetching data for Unit#4
-	rows4, err := dbConnection.Query(context.Background(), "SELECT * FROM unit4 ORDER BY day")
+	rows4, err := dbConnection.Query(context.Background(), "SELECT * FROM unit4 ORDER BY id")
 	if err != nil {
 		fmt.Fprint(w, "The error during db fetch occurred: ", err)
 		return
