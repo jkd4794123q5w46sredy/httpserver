@@ -21,7 +21,7 @@ type Unit struct {
 }
 
 func establishDBConn() (*pgx.Conn, error) {
-	conn, err := pgx.Connect(context.Background(), "postgres://postgres:12345@pgDB:5433/units?sslmode=disable")
+	conn, err := pgx.Connect(context.Background(), "postgres://postgres:12345@pgDB:5432/units?sslmode=disable")
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
