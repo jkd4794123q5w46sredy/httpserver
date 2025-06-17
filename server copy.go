@@ -240,45 +240,45 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Outputting statistics for Unit#1
 	fmt.Fprint(w, "\nUnit#1")
-	fmt.Println("Sig#1. Level: ", u1sig1Sum)
-	fmt.Println("Sig#2. Level: ", u1sig2Sum)
-	fmt.Println("Sig#3. Level: ", u1sig3Sum)
-	fmt.Println("Sig#4. Level: ", u1sig4Sum)
+	fmt.Fprintf(w, "\nSig#1. Level: %d", u1sig1Sum)
+	fmt.Fprintf(w, "\nSig#2. Level: %d", u1sig2Sum)
+	fmt.Fprintf(w, "\nSig#3. Level: %d", u1sig3Sum)
+	fmt.Fprintf(w, "\nSig#4. Level: %d", u1sig4Sum)
 
 	// Signal 1
 	if u1sig1Sum/5 < 4 {
-		fmt.Println("Unit#1 Signal#1 code green")
+		fmt.Fprintf(w, "\nUnit#1 Signal#1 code green")
 	} else if u1sig1Sum/5 >= 4 && u1sig1Sum/5 < 7 {
-		fmt.Println("Unit#1 Signal#1 code orange")
+		fmt.Fprintf(w, "\nUnit#1 Signal#1 code orange")
 	} else if u1sig1Sum/5 >= 7 {
-		fmt.Println("Unit#1 Signal#1 code red")
+		fmt.Fprintf(w, "\nUnit#1 Signal#1 code red")
 	}
 
 	// Signal 2
 	if u1sig2Sum/5 < 4 {
-		fmt.Println("Unit#1 Signal#2 code green")
+		fmt.Fprintf(w, "\nUnit#1 Signal#2 code green")
 	} else if u1sig2Sum/5 >= 4 && u1sig2Sum/5 < 7 {
-		fmt.Println("Unit#1 Signal#2 code orange")
+		fmt.Fprintf(w, "\nUnit#1 Signal#2 code orange")
 	} else if u1sig2Sum/5 >= 7 {
-		fmt.Println("Unit#1 Signal#2 code red")
+		fmt.Fprintf(w, "\nUnit#1 Signal#2 code red")
 	}
 
 	// Signal 3
 	if u1sig3Sum/5 < 4 {
-		fmt.Println("Unit#1 Signal#3 code green")
+		fmt.Fprintf(w, "\nUnit#1 Signal#3 code green")
 	} else if u1sig3Sum/5 >= 4 && u1sig3Sum/5 < 7 {
-		fmt.Println("Unit#1 Signal#3 code orange")
+		fmt.Fprintf(w, "\nUnit#1 Signal#3 code orange")
 	} else if u1sig3Sum/5 >= 7 {
-		fmt.Println("Unit#1 Signal#3 code red")
+		fmt.Fprintf(w, "\nUnit#1 Signal#3 code red")
 	}
 
 	// Signal 4
 	if u1sig4Sum/5 < 4 {
-		fmt.Println("Unit#1 Signal#4 code green")
+		fmt.Fprintf(w, "\nUnit#1 Signal#4 code green")
 	} else if u1sig4Sum/5 >= 4 && u1sig4Sum/5 < 7 {
-		fmt.Println("Unit#1 Signal#4 code orange")
+		fmt.Fprintf(w, "\nUnit#1 Signal#4 code orange")
 	} else if u1sig4Sum/5 >= 7 {
-		fmt.Println("Unit#1 Signal#4 code red")
+		fmt.Fprintf(w, "\nUnit#1 Signal#4 code red")
 	}
 
 	// Fetching data for Unit#2
@@ -311,35 +311,35 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Outputting statistics for Unit#2
 	fmt.Fprint(w, "\nUnit#2")
-	fmt.Println("Sig#1. Level: ", u2sig1Sum)
-	fmt.Println("Sig#2. Level: ", u2sig2Sum)
-	fmt.Println("Sig#3. Level: ", u2sig3Sum)
+	fmt.Fprintf(w, "\nSig#1. Level: %d", u2sig1Sum)
+	fmt.Fprintf(w, "\nSig#2. Level: %d", u2sig2Sum)
+	fmt.Fprintf(w, "\nSig#3. Level: %d", u2sig3Sum)
 
 	// Signal 1
 	if u2sig1Sum/5 < 4 {
-		fmt.Println("Unit#2 Signal#1 code green")
+		fmt.Fprintf(w, "\nUnit#2 Signal#1 code green")
 	} else if u2sig1Sum/5 >= 4 && u2sig1Sum/5 < 7 {
-		fmt.Println("Unit#2 Signal#1 code orange")
+		fmt.Fprintf(w, "\nUnit#2 Signal#1 code orange")
 	} else if u2sig1Sum/5 >= 7 {
-		fmt.Println("Unit#2 Signal#1 code red")
+		fmt.Fprintf(w, "\nUnit#2 Signal#1 code red")
 	}
 
 	// Signal 2
 	if u2sig2Sum/5 < 4 {
-		fmt.Println("Unit#2 Signal#2 code green")
+		fmt.Fprintf(w, "\nUnit#2 Signal#2 code green")
 	} else if u2sig2Sum/5 >= 4 && u2sig2Sum/5 < 7 {
-		fmt.Println("Unit#2 Signal#2 code orange")
+		fmt.Fprintf(w, "\nUnit#2 Signal#2 code orange")
 	} else if u2sig2Sum/5 >= 7 {
-		fmt.Println("Unit#2 Signal#2 code red")
+		fmt.Fprintf(w, "\nUnit#2 Signal#2 code red")
 	}
 
 	// Signal 3
 	if u2sig3Sum/5 < 4 {
-		fmt.Println("Unit#2 Signal#3 code green")
+		fmt.Fprintf(w, "\nUnit#2 Signal#3 code green")
 	} else if u2sig3Sum/5 >= 4 && u2sig3Sum/5 < 7 {
-		fmt.Println("Unit#2 Signal#3 code orange")
+		fmt.Fprintf(w, "\nUnit#2 Signal#3 code orange")
 	} else if u2sig3Sum/5 >= 7 {
-		fmt.Println("Unit#2 Signal#3 code red")
+		fmt.Fprintf(w, "\nUnit#2 Signal#3 code red")
 	}
 
 	// Fetching data for Unit#3
@@ -377,35 +377,35 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Outputting statistics for Unit#3
 	fmt.Fprint(w, "\nUnit#3")
-	fmt.Println("Sig#1. Level: ", u3sig1Sum)
-	fmt.Println("Sig#2. Level: ", u3sig2Sum)
-	fmt.Println("Sig#3. Level: ", u3sig3Sum)
+	fmt.Fprintf(w, "\nSig#1. Level: %d", u3sig1Sum)
+	fmt.Fprintf(w, "\nSig#2. Level: %d", u3sig2Sum)
+	fmt.Fprintf(w, "\nSig#3. Level: %d", u3sig3Sum)
 
 	// Signal 1
 	if u3sig1Sum/5 < 4 {
-		fmt.Println("Unit#3 Signal#1 code green")
+		fmt.Fprintf(w, "\nUnit#3 Signal#1 code green")
 	} else if u3sig1Sum/5 >= 4 && u3sig1Sum/5 < 7 {
-		fmt.Println("Unit#3 Signal#1 code orange")
+		fmt.Fprintf(w, "\nUnit#3 Signal#1 code orange")
 	} else if u3sig1Sum/5 >= 7 {
-		fmt.Println("Unit#3 Signal#1 code red")
+		fmt.Fprintf(w, "\nUnit#3 Signal#1 code red")
 	}
 
 	// Signal 2
 	if u3sig2Sum/5 < 4 {
-		fmt.Println("Unit#3 Signal#2 code green")
+		fmt.Fprintf(w, "\nUnit#3 Signal#2 code green")
 	} else if u3sig2Sum/5 >= 4 && u3sig2Sum/5 < 7 {
-		fmt.Println("Unit#3 Signal#2 code orange")
+		fmt.Fprintf(w, "\nUnit#3 Signal#2 code orange")
 	} else if u3sig2Sum/5 >= 7 {
-		fmt.Println("Unit#3 Signal#2 code red")
+		fmt.Fprintf(w, "\nUnit#3 Signal#2 code red")
 	}
 
 	// Signal 3
 	if u3sig3Sum/5 < 4 {
-		fmt.Println("Unit#3 Signal#3 code green")
+		fmt.Fprintf(w, "\nUnit#3 Signal#3 code green")
 	} else if u3sig3Sum/5 >= 4 && u3sig3Sum/5 < 7 {
-		fmt.Println("Unit#3 Signal#3 code orange")
+		fmt.Fprintf(w, "\nUnit#3 Signal#3 code orange")
 	} else if u3sig3Sum/5 >= 7 {
-		fmt.Println("Unit#3 Signal#3 code red")
+		fmt.Fprintf(w, "\nUnit#3 Signal#3 code red")
 	}
 
 	// Fetching data for Unit#4
@@ -443,35 +443,35 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Outputting statistics for Unit#4
 	fmt.Fprint(w, "\nUnit#4")
-	fmt.Println("Sig#1. Level: ", u4sig1Sum)
-	fmt.Println("Sig#2. Level: ", u4sig2Sum)
-	fmt.Println("Sig#3. Level: ", u4sig3Sum)
+	fmt.Fprintf(w, "\nSig#1. Level: %d", u4sig1Sum)
+	fmt.Fprintf(w, "\nSig#2. Level: %d", u4sig2Sum)
+	fmt.Fprintf(w, "\nSig#3. Level: %d", u4sig3Sum)
 
 	// Signal 1
 	if u4sig1Sum/5 < 4 {
-		fmt.Println("Unit#4 Signal#1 code green")
+		fmt.Fprintf(w, "\nUnit#4 Signal#1 code green")
 	} else if u4sig1Sum/5 >= 4 && u4sig1Sum/5 < 7 {
-		fmt.Println("Unit#4 Signal#1 code orange")
+		fmt.Fprintf(w, "\nUnit#4 Signal#1 code orange")
 	} else if u4sig1Sum/5 >= 7 {
-		fmt.Println("Unit#4 Signal#1 code red")
+		fmt.Fprintf(w, "\nUnit#4 Signal#1 code red")
 	}
 
 	// Signal 2
 	if u4sig2Sum/5 < 4 {
-		fmt.Println("Unit#4 Signal#2 code green")
+		fmt.Fprintf(w, "\nUnit#4 Signal#2 code green")
 	} else if u4sig2Sum/5 >= 4 && u4sig2Sum/5 < 7 {
-		fmt.Println("Unit#4 Signal#2 code orange")
+		fmt.Fprintf(w, "\nUnit#4 Signal#2 code orange")
 	} else if u4sig2Sum/5 >= 7 {
-		fmt.Println("Unit#4 Signal#2 code red")
+		fmt.Fprintf(w, "\nUnit#4 Signal#2 code red")
 	}
 
 	// Signal 3
 	if u4sig3Sum/5 < 4 {
-		fmt.Println("Unit#4 Signal#3 code green")
+		fmt.Fprintf(w, "\nUnit#4 Signal#3 code green")
 	} else if u4sig3Sum/5 >= 4 && u4sig3Sum/5 < 7 {
-		fmt.Println("Unit#4 Signal#3 code orange")
+		fmt.Fprintf(w, "\nUnit#4 Signal#3 code orange")
 	} else if u4sig3Sum/5 >= 7 {
-		fmt.Println("Unit#4 Signal#3 code red")
+		fmt.Fprintf(w, "\nUnit#4 Signal#3 code red")
 	}
 }
 
